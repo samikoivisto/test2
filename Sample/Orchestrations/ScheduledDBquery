@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process currentId="29" name="ScheduledDBquery" persistenceEnabled="true" selectedActivityId="5" serialize="false" targetNamespace="http://www.approuter.com/schemas/2004/01/maestro/process/" xmlns="http://www.approuter.com/schemas/2004/01/maestro/process/" xmlns:bpel-ext="http://www.approuter.com/schemas/2003/1/bpel-ext/" xmlns:bpws="http://www.approuter.com/schemas/2004/01/maestro/process/" xmlns:fn="http://www.w3.org/2002/11/xquery-functions" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><schemas><schemaDescription activityId="7" counter-for-extra-xml-schema="0" schemaId="FtpConnectionParameter.xsd-7"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.approuter.com/schemas/2004/1/module/ftp/connectionparameter/"
+    xmlns:ihftp="http://www.approuter.com/schemas/2004/1/module/ftp/connectionparameter/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ih="http://www.approuter.com/schema/extension" elementFormDefault="qualified">
+    <xsd:simpleType name="NonEmptyString">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="FtpConnectionParamDetails">
+        <xsd:sequence>
+            <xsd:element name="host" type="xsd:string"/>
+            <xsd:element name="port" type="xsd:string"/>
+            <xsd:element name="username" type="ihftp:NonEmptyString"/>
+            <xsd:element name="password" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+            <xsd:attribute name="timeout" type="xsd:int" default="300" use="optional"/>
+            <xsd:attribute name="certificateName" type="xsd:string" default="Factory Supplied Identity" /> 
+            <xsd:attribute name="isActive" type="xsd:boolean" default="false"/>
+    </xsd:complexType>
+    <xsd:element name="connection" type="ihftp:FtpConnectionParamDetails"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="serializexml-output-param-string.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   elementFormDefault="qualified"
+   targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+   xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+   attributeFormDefault="unqualified">
+   <xsd:element name="XmlText" type="xsd:string"/>
+</xsd:schema>]]></schemaDescription><schemaDescription activityId="7" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-encoding.xsd-7"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="encoding" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="4" counter-for-extra-xml-schema="0" schemaId="Schema_4_mapOutputsTask_in_4"><![CDATA[<xs:schema elementFormDefault="unqualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="rows" type="RowsType"/><xs:complexType name="RowsType"><xs:sequence><xs:element name="row" type="ColSetType" minOccurs="1" maxOccurs="unbounded"/></xs:sequence></xs:complexType><xs:complexType name="ColSetType"><xs:sequence><xs:element name="id" type="xs:integer" nillable="false"><xs:annotation><xs:appinfo><app:node-app-info xmlns:app="http://www.approuter.com/schemas/2007/Mapping/AppInfo"><app:node-name>id</app:node-name><app:node-description>Column Name</app:node-description></app:node-app-info></xs:appinfo></xs:annotation></xs:element><xs:element name="name" type="xs:string" nillable="true"><xs:annotation><xs:appinfo><app:node-app-info xmlns:app="http://www.approuter.com/schemas/2007/Mapping/AppInfo"><app:node-name>name</app:node-name><app:node-description>Column Name</app:node-description></app:node-app-info></xs:appinfo></xs:annotation></xs:element><xs:element name="company" type="xs:string" nillable="true"><xs:annotation><xs:appinfo><app:node-app-info xmlns:app="http://www.approuter.com/schemas/2007/Mapping/AppInfo"><app:node-name>company</app:node-name><app:node-description>Column Name</app:node-description></app:node-app-info></xs:appinfo></xs:annotation></xs:element><xs:element name="address" type="xs:string" nillable="true"><xs:annotation><xs:appinfo><app:node-app-info xmlns:app="http://www.approuter.com/schemas/2007/Mapping/AppInfo"><app:node-name>address</app:node-name><app:node-description>Column Name</app:node-description></app:node-app-info></xs:appinfo></xs:annotation></xs:element><xs:element name="city" type="xs:string" nillable="true"><xs:annotation><xs:appinfo><app:node-app-info xmlns:app="http://www.approuter.com/schemas/2007/Mapping/AppInfo"><app:node-name>city</app:node-name><app:node-description>Column Name</app:node-description></app:node-app-info></xs:appinfo></xs:annotation></xs:element><xs:element name="country" type="xs:string" nillable="true"><xs:annotation><xs:appinfo><app:node-app-info xmlns:app="http://www.approuter.com/schemas/2007/Mapping/AppInfo"><app:node-name>country</app:node-name><app:node-description>Column Name</app:node-description></app:node-app-info></xs:appinfo></xs:annotation></xs:element></xs:sequence></xs:complexType></xs:schema>]]></schemaDescription><schemaDescription activityId="7" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-filename.xsd-7"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="filename" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="loopcounter_1"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="loopcounter_1" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="serializexml-input-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   elementFormDefault="qualified"
+   targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+   xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+   attributeFormDefault="unqualified">
+   
+   <xsd:element name="InputXml" type="xsd:anyType"/>
+   <xsd:element name="DocTypeSystem" type="xsd:string"/>
+   <xsd:element name="DocTypePublic" type="xsd:string"/>
+   <xsd:element name="OmitXmlDecl" type="xsd:boolean"/>
+   <xsd:element name="Encoding" type="xsd:string"/>
+</xsd:schema>
+
+]]></schemaDescription><schemaDescription activityId="5" counter-for-extra-xml-schema="0" schemaId="scheduler-output-param.xsd-5"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   elementFormDefault="qualified"
+   targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+   xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+   attributeFormDefault="unqualified">
+   <xsd:element name="time" type="xsd:dateTime"/>
+</xsd:schema>]]></schemaDescription><schemaDescription activityId="7" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-string.xsd-7"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="data" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="7" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-directory.xsd-7"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="directory" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="7" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-overwrite.xsd-7"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="overwrite" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="XmlText"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="XmlText" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="2" counter-for-extra-xml-schema="0" schemaId="orchestration_internal_variableJobInfo"><![CDATA[<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://www.approuter.com/schemas/2005/1/orchestration/jobinfo"
+            targetNamespace="http://www.approuter.com/schemas/2005/1/orchestration/jobinfo" elementFormDefault="qualified">
+    <xsd:element name="JobInfo" type="tns:JobInfoType"/>
+    <xsd:complexType name="JobInfoType">
+        <xsd:sequence>
+           <xsd:element name="jobId" type="xsd:string"/>
+           <xsd:element name="jobStartTime" type="xsd:dateTime"/>
+           <xsd:element name="projectName" type="xsd:string"/>
+           <xsd:element name="configurationName" type="xsd:string"/>
+           <xsd:element name="orchestrationName" type="xsd:string"/>
+           <xsd:element name="routerHostName" type="xsd:string"/>
+        </xsd:sequence>
+     </xsd:complexType>
+</xsd:schema>]]></schemaDescription><schemaDescription activityId="4" counter-for-extra-xml-schema="0" schemaId="Schema_4_mapInputsTask_in_4"><![CDATA[<xs:schema elementFormDefault="unqualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="parameters" type="ParametersType"/><xs:complexType name="ParametersType"><xs:sequence/></xs:complexType></xs:schema>]]></schemaDescription></schemas><dependecies><dependency id="4" projectNodeGuid="appnet-guid://3025EE0A0753739F7D8717D138A67FF77E7CCF75835869552CDD9636F7346E43" type="activity"/><dependency id="7" projectNodeGuid="appnet-guid://36D451240B44E42EBE6513BD8B4E04D07BA596AF04CA3A4C86E12A1C483E2715" type="activity"/></dependecies><variables selectedVariableName="loopvalue_1"><variable assignable="false" bpel-ext:location="orchestration_internal_variableJobInfo" bpel-ext:locationType="2" bpel-ext:originalRootNode="" bpel-ext:rootNode="JobInfo" bpel-ext:rootNodeNS="http://www.approuter.com/schemas/2005/1/orchestration/jobinfo" canBeSubstitutedFromUI="true" internal="true" name="JobInfo" readOnly="true" typeEditable="false"><description>The orchestration creates this variable for every job. You can neither rename it nor delete it.</description></variable><variable assignable="true" bpel-ext:location="Schema_4_mapOutputsTask_in_4" bpel-ext:locationType="2" bpel-ext:originalRootNode="rows" bpel-ext:rootNode="rows" canBeSubstitutedFromUI="true" internal="false" name="rows" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:activityId="6" bpel-ext:location="XmlText" bpel-ext:locationType="2" bpel-ext:originalRootNode="XmlText" bpel-ext:originalRootNodeNS="http://www.approuter.com/schemas/2003/1/castirontypes" bpel-ext:rootNode="XmlText" bpel-ext:rootNodeNS="http://www.approuter.com/schemas/2003/1/castirontypes" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" messageType="XmlText" name="XmlText" primitiveType="string" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="loopcounter_1" bpel-ext:locationType="2" bpel-ext:originalRootNode="loopcounter_1" bpel-ext:rootNode="loopcounter_1" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="loopcounter_1" primitiveType="int" readOnly="false" typeEditable="false"><description>Variable Description</description></variable><variable assignable="false" bpel-ext:location="Schema_4_mapOutputsTask_in_4" bpel-ext:locationType="2" bpel-ext:originalRootNode="rows" bpel-ext:rootNode="row" bpel-ext:sourcexpath="/rows/row" canBeSubstitutedFromUI="true" internal="false" name="loopvalue_1" readOnly="false" typeEditable="true"><description>Variable Description</description></variable></variables><comments/><sequence activityId="2" comments="" configurationId="flow_sequence_id_1" description="Start Activity" expanded="true" name="Start"><start activityId="5" activityName="" comments="" configurationId="scheduler_flow_id_1" description="Schedule Activity" expanded="true" moduleName="http://www.approuter.com/schemas/2004/1/module/scheduler/" name="Schedule Job" partnerLink=""><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="5" canBeSubstitutedFromUI="true" displayName="time" isParameter="true" location="scheduler-output-param.xsd-5" locationType="2" logicalName="srcDoc1" messageType="time" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="time" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="time"/></specInfo><doMapping/></mapSpec></outputMapSpecConfig><tasksConfig><com.approuter.studio.connectors.task.TaskList><![CDATA[
+  ]]><tasks><![CDATA[
+    ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+      ]]><key><![CDATA[setupWorkflowTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.DailyScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.DailyScheduleSlice><![CDATA[
+              ]]><nthDay><![CDATA[0]]></nthDay><![CDATA[
+              ]]><hour><![CDATA[23]]></hour><![CDATA[
+              ]]><nthHour><![CDATA[0]]></nthHour><![CDATA[
+              ]]><minute><![CDATA[30]]></minute><![CDATA[
+              ]]><ntminute><![CDATA[5]]></ntminute><![CDATA[
+              ]]><seconds><![CDATA[30]]></seconds><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.DailyScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.HourlyScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.HourlyScheduleSlice><![CDATA[
+              ]]><nthHour><![CDATA[0]]></nthHour><![CDATA[
+              ]]><minute><![CDATA[0]]></minute><![CDATA[
+              ]]><ntminute><![CDATA[5]]></ntminute><![CDATA[
+              ]]><seconds><![CDATA[30]]></seconds><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.HourlyScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.SecondsThirtyScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.SecondsThirtyScheduleSlice><![CDATA[
+              ]]><interval><![CDATA[30]]></interval><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.SecondsThirtyScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.YearlyScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.YearlyScheduleSlice><![CDATA[
+              ]]><nthYear><![CDATA[1]]></nthYear><![CDATA[
+              ]]><monthOfYear><![CDATA[0]]></monthOfYear><![CDATA[
+              ]]><nthMonth><![CDATA[1]]></nthMonth><![CDATA[
+              ]]><dayOfMonth><![CDATA[1]]></dayOfMonth><![CDATA[
+              ]]><nthWeek><![CDATA[1]]></nthWeek><![CDATA[
+              ]]><dayOfWeek><![CDATA[0]]></dayOfWeek><![CDATA[
+              ]]><nthDay><![CDATA[0]]></nthDay><![CDATA[
+              ]]><hour><![CDATA[0]]></hour><![CDATA[
+              ]]><nthHour><![CDATA[0]]></nthHour><![CDATA[
+              ]]><minute><![CDATA[0]]></minute><![CDATA[
+              ]]><ntminute><![CDATA[5]]></ntminute><![CDATA[
+              ]]><seconds><![CDATA[30]]></seconds><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.YearlyScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.SecondsScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.SecondsScheduleSlice><![CDATA[
+              ]]><interval><![CDATA[60]]></interval><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.SecondsScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.SecondsTenScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.SecondsTenScheduleSlice><![CDATA[
+              ]]><interval><![CDATA[10]]></interval><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.SecondsTenScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.MontlyScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.MontlyScheduleSlice><![CDATA[
+              ]]><nthMonth><![CDATA[1]]></nthMonth><![CDATA[
+              ]]><dayOfMonth><![CDATA[1]]></dayOfMonth><![CDATA[
+              ]]><nthWeek><![CDATA[1]]></nthWeek><![CDATA[
+              ]]><dayOfWeek><![CDATA[0]]></dayOfWeek><![CDATA[
+              ]]><nthDay><![CDATA[0]]></nthDay><![CDATA[
+              ]]><hour><![CDATA[0]]></hour><![CDATA[
+              ]]><nthHour><![CDATA[0]]></nthHour><![CDATA[
+              ]]><minute><![CDATA[0]]></minute><![CDATA[
+              ]]><ntminute><![CDATA[5]]></ntminute><![CDATA[
+              ]]><seconds><![CDATA[30]]></seconds><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.MontlyScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.MinuteScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.MinuteScheduleSlice><![CDATA[
+              ]]><ntminute><![CDATA[5]]></ntminute><![CDATA[
+              ]]><seconds><![CDATA[30]]></seconds><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.MinuteScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.SecondsTwentyScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.SecondsTwentyScheduleSlice><![CDATA[
+              ]]><interval><![CDATA[20]]></interval><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.SecondsTwentyScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[true]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selectedScheduleSlice]]></string><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.DailyScheduleSlice]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.SecondsFiveScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.SecondsFiveScheduleSlice><![CDATA[
+              ]]><interval><![CDATA[5]]></interval><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.SecondsFiveScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[com.approuter.studio.activities.scheduler.model.WeeklyScheduleSlice]]></string><![CDATA[
+            ]]><com.approuter.studio.activities.scheduler.model.WeeklyScheduleSlice><![CDATA[
+              ]]><nthWeek><![CDATA[1]]></nthWeek><![CDATA[
+              ]]><dayOfWeek><![CDATA[0]]></dayOfWeek><![CDATA[
+              ]]><nthDay><![CDATA[0]]></nthDay><![CDATA[
+              ]]><hour><![CDATA[0]]></hour><![CDATA[
+              ]]><nthHour><![CDATA[0]]></nthHour><![CDATA[
+              ]]><minute><![CDATA[0]]></minute><![CDATA[
+              ]]><ntminute><![CDATA[5]]></ntminute><![CDATA[
+              ]]><seconds><![CDATA[30]]></seconds><![CDATA[
+            ]]></com.approuter.studio.activities.scheduler.model.WeeklyScheduleSlice><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners><![CDATA[
+        ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+          ]]><key><![CDATA[mapOutputsTask]]></key><![CDATA[
+          ]]><children/><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[false]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners/><![CDATA[
+        ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+      ]]></listeners><![CDATA[
+    ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.task.ActivityRefTask/listeners/com.approuter.studio.connectors.task.MapTask"/><![CDATA[
+  ]]></tasks><![CDATA[
+  ]]><valid><![CDATA[false]]></valid><![CDATA[
+]]></com.approuter.studio.connectors.task.TaskList></tasksConfig></start><invoke activityId="4" activityName="" comments="" configurationId="db_parameterizedQuery_id" description="This activity gets rows of data from the selected database endpoint based on a given SQL select query" expanded="true" moduleName="http://www.approuter.com/module/database/" name="Execute Query" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><destination canBeSubstitutedFromUI="true" displayName="parameters" isParameter="true" location="Schema_4_mapInputsTask_in_4" locationType="2" logicalName="dstDoc1" optionalParameter="false" originalRootNodeName="parameters" rootNodeName="parameters" varName="parameters"/></specInfo><doMapping/></mapSpec></inputMapSpecConfig><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="rows" isParameter="true" location="Schema_4_mapOutputsTask_in_4" locationType="2" logicalName="srcDoc1" optionalParameter="false" originalRootNodeName="rows" rootNodeName="rows" varName="rows"/><destination canBeSubstitutedFromUI="true" displayName="rows" isParameter="false" location="Schema_4_mapOutputsTask_in_4" locationType="2" logicalName="dstDoc1" optionalParameter="false" originalRootNodeName="rows" rootNodeName="rows" varName="rows"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/ihmap:instances"/><to docName="dstDoc1" path="/rows/row/ihmap:instances"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/id"/><to docName="dstDoc1" path="/rows/row/id"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/name/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/name/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/name"/><to docName="dstDoc1" path="/rows/row/name"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/company/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/company/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/company"/><to docName="dstDoc1" path="/rows/row/company"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/address/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/address/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/address"/><to docName="dstDoc1" path="/rows/row/address"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/city/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/city/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/city"/><to docName="dstDoc1" path="/rows/row/city"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/country/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/country/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/country"/><to docName="dstDoc1" path="/rows/row/country"/></do></rule></doMapping></mapSpec></outputMapSpecConfig><tasksConfig><com.approuter.studio.connectors.task.TaskList><![CDATA[
+  ]]><tasks><![CDATA[
+    ]]><com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+      ]]><key><![CDATA[summaryTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners/><![CDATA[
+    ]]></com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+    ]]><com.approuter.studio.connectors.database.tasks.DBEndpointTask><![CDATA[
+      ]]><key><![CDATA[endpointTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[endpoint]]></string><![CDATA[
+            ]]><string><![CDATA[appnet-guid://3025EE0A0753739F7D8717D138A67FF77E7CCF75835869552CDD9636F7346E43]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners><![CDATA[
+        ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+          ]]><key><![CDATA[setupWorkflowTask]]></key><![CDATA[
+          ]]><children><![CDATA[
+            ]]><com.approuter.studio.connectors.database.tasks.DBEnterQueryTask><![CDATA[
+              ]]><key><![CDATA[enterQueryTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[validatePressed]]></string><![CDATA[
+                    ]]><boolean><![CDATA[true]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[SQL]]></string><![CDATA[
+                    ]]><string><![CDATA[select * from address limit 10;]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[encoding]]></string><![CDATA[
+                    ]]><string><![CDATA[ISO-8859-1]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[maxRows]]></string><![CDATA[
+                    ]]><string><![CDATA[0]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[validQuery]]></string><![CDATA[
+                    ]]><boolean><![CDATA[true]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners><![CDATA[
+                ]]><com.approuter.studio.connectors.database.tasks.DBSetupInputsTask><![CDATA[
+                  ]]><key><![CDATA[setupInputTask]]></key><![CDATA[
+                  ]]><children/><![CDATA[
+                  ]]><model><![CDATA[
+                    ]]><map><![CDATA[
+                      ]]><entry><![CDATA[
+                        ]]><string><![CDATA[SQL]]></string><![CDATA[
+                        ]]><string><![CDATA[select * from address limit 10;]]></string><![CDATA[
+                      ]]></entry><![CDATA[
+                      ]]><entry><![CDATA[
+                        ]]><string><![CDATA[selected]]></string><![CDATA[
+                        ]]><string><![CDATA[false]]></string><![CDATA[
+                      ]]></entry><![CDATA[
+                      ]]><entry><![CDATA[
+                        ]]><string><![CDATA[tableData]]></string><![CDATA[
+                        ]]><list/><![CDATA[
+                      ]]></entry><![CDATA[
+                      ]]><entry><![CDATA[
+                        ]]><string><![CDATA[encoding]]></string><![CDATA[
+                        ]]><string><![CDATA[ISO-8859-1]]></string><![CDATA[
+                      ]]></entry><![CDATA[
+                    ]]></map><![CDATA[
+                  ]]></model><![CDATA[
+                  ]]><listeners/><![CDATA[
+                ]]></com.approuter.studio.connectors.database.tasks.DBSetupInputsTask><![CDATA[
+                ]]><com.approuter.studio.connectors.database.tasks.DBSetupOutputsTask><![CDATA[
+                  ]]><key><![CDATA[setupOutputTask]]></key><![CDATA[
+                  ]]><children/><![CDATA[
+                  ]]><model><![CDATA[
+                    ]]><map><![CDATA[
+                      ]]><entry><![CDATA[
+                        ]]><string><![CDATA[SQL]]></string><![CDATA[
+                        ]]><string><![CDATA[select * from address limit 10;]]></string><![CDATA[
+                      ]]></entry><![CDATA[
+                      ]]><entry><![CDATA[
+                        ]]><string><![CDATA[selected]]></string><![CDATA[
+                        ]]><string><![CDATA[false]]></string><![CDATA[
+                      ]]></entry><![CDATA[
+                      ]]><entry><![CDATA[
+                        ]]><string><![CDATA[tableData]]></string><![CDATA[
+                        ]]><list><![CDATA[
+                          ]]><com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                            ]]><schema/><![CDATA[
+                            ]]><name><![CDATA[id]]></name><![CDATA[
+                            ]]><type><![CDATA[INTEGER]]></type><![CDATA[
+                            ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                            ]]><size><![CDATA[8]]></size><![CDATA[
+                            ]]><nullable><![CDATA[false]]></nullable><![CDATA[
+                            ]]><tableName><![CDATA[address]]></tableName><![CDATA[
+                            ]]><xpath><![CDATA[id]]></xpath><![CDATA[
+                          ]]></com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                          ]]><com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                            ]]><schema/><![CDATA[
+                            ]]><name><![CDATA[name]]></name><![CDATA[
+                            ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                            ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                            ]]><size><![CDATA[255]]></size><![CDATA[
+                            ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                            ]]><tableName><![CDATA[address]]></tableName><![CDATA[
+                            ]]><xpath><![CDATA[name]]></xpath><![CDATA[
+                          ]]></com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                          ]]><com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                            ]]><schema/><![CDATA[
+                            ]]><name><![CDATA[company]]></name><![CDATA[
+                            ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                            ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                            ]]><size><![CDATA[255]]></size><![CDATA[
+                            ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                            ]]><tableName><![CDATA[address]]></tableName><![CDATA[
+                            ]]><xpath><![CDATA[company]]></xpath><![CDATA[
+                          ]]></com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                          ]]><com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                            ]]><schema/><![CDATA[
+                            ]]><name><![CDATA[address]]></name><![CDATA[
+                            ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                            ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                            ]]><size><![CDATA[255]]></size><![CDATA[
+                            ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                            ]]><tableName><![CDATA[address]]></tableName><![CDATA[
+                            ]]><xpath><![CDATA[address]]></xpath><![CDATA[
+                          ]]></com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                          ]]><com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                            ]]><schema/><![CDATA[
+                            ]]><name><![CDATA[city]]></name><![CDATA[
+                            ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                            ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                            ]]><size><![CDATA[255]]></size><![CDATA[
+                            ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                            ]]><tableName><![CDATA[address]]></tableName><![CDATA[
+                            ]]><xpath><![CDATA[city]]></xpath><![CDATA[
+                          ]]></com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                          ]]><com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                            ]]><schema/><![CDATA[
+                            ]]><name><![CDATA[country]]></name><![CDATA[
+                            ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                            ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                            ]]><size><![CDATA[100]]></size><![CDATA[
+                            ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                            ]]><tableName><![CDATA[address]]></tableName><![CDATA[
+                            ]]><xpath><![CDATA[country]]></xpath><![CDATA[
+                          ]]></com.approuter.studio.connectors.database.tables.SetupQueryTableData><![CDATA[
+                        ]]></list><![CDATA[
+                      ]]></entry><![CDATA[
+                      ]]><entry><![CDATA[
+                        ]]><string><![CDATA[encoding]]></string><![CDATA[
+                        ]]><string><![CDATA[ISO-8859-1]]></string><![CDATA[
+                      ]]></entry><![CDATA[
+                    ]]></map><![CDATA[
+                  ]]></model><![CDATA[
+                  ]]><listeners/><![CDATA[
+                ]]></com.approuter.studio.connectors.database.tasks.DBSetupOutputsTask><![CDATA[
+              ]]></listeners><![CDATA[
+            ]]></com.approuter.studio.connectors.database.tasks.DBEnterQueryTask><![CDATA[
+            ]]><com.approuter.studio.connectors.database.tasks.DBSetupInputsTask reference="../com.approuter.studio.connectors.database.tasks.DBEnterQueryTask/listeners/com.approuter.studio.connectors.database.tasks.DBSetupInputsTask"/><![CDATA[
+            ]]><com.approuter.studio.connectors.database.tasks.DBSetupOutputsTask reference="../com.approuter.studio.connectors.database.tasks.DBEnterQueryTask/listeners/com.approuter.studio.connectors.database.tasks.DBSetupOutputsTask"/><![CDATA[
+            ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+              ]]><key><![CDATA[retryTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[maxRetries]]></string><![CDATA[
+                    ]]><int><![CDATA[5]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[timeout]]></string><![CDATA[
+                    ]]><int><![CDATA[300]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[retryInterval]]></string><![CDATA[
+                    ]]><int><![CDATA[30]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+          ]]></children><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[false]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners><![CDATA[
+            ]]><com.approuter.studio.connectors.database.tasks.DBQueryMapTask><![CDATA[
+              ]]><type><![CDATA[0]]></type><![CDATA[
+              ]]><inputParamName><![CDATA[parameters]]></inputParamName><![CDATA[
+              ]]><outputParamName><![CDATA[rows]]></outputParamName><![CDATA[
+              ]]><key><![CDATA[mapInputsTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[schema]]></string><![CDATA[
+                    ]]><string><![CDATA[Schema_4_mapInputsTask_in_4]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[true]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[inputsRequired]]></string><![CDATA[
+                    ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.database.tasks.DBQueryMapTask><![CDATA[
+            ]]><com.approuter.studio.connectors.database.tasks.DBQueryMapTask><![CDATA[
+              ]]><type><![CDATA[1]]></type><![CDATA[
+              ]]><inputParamName><![CDATA[parameters]]></inputParamName><![CDATA[
+              ]]><outputParamName><![CDATA[rows]]></outputParamName><![CDATA[
+              ]]><key><![CDATA[mapOutputsTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[schema]]></string><![CDATA[
+                    ]]><string><![CDATA[Schema_4_mapOutputsTask_in_4]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[inputsRequired]]></string><![CDATA[
+                    ]]><boolean><![CDATA[true]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.database.tasks.DBQueryMapTask><![CDATA[
+          ]]></listeners><![CDATA[
+        ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+      ]]></listeners><![CDATA[
+    ]]></com.approuter.studio.connectors.database.tasks.DBEndpointTask><![CDATA[
+    ]]><com.approuter.studio.connectors.task.ActivityRefTask reference="../com.approuter.studio.connectors.database.tasks.DBEndpointTask/listeners/com.approuter.studio.connectors.task.ActivityRefTask"/><![CDATA[
+    ]]><com.approuter.studio.connectors.database.tasks.DBQueryMapTask reference="../com.approuter.studio.connectors.database.tasks.DBEndpointTask/listeners/com.approuter.studio.connectors.task.ActivityRefTask/listeners/com.approuter.studio.connectors.database.tasks.DBQueryMapTask"/><![CDATA[
+    ]]><com.approuter.studio.connectors.database.tasks.DBQueryMapTask reference="../com.approuter.studio.connectors.database.tasks.DBEndpointTask/listeners/com.approuter.studio.connectors.task.ActivityRefTask/listeners/com.approuter.studio.connectors.database.tasks.DBQueryMapTask[2]"/><![CDATA[
+  ]]></tasks><![CDATA[
+  ]]><valid><![CDATA[false]]></valid><![CDATA[
+]]></com.approuter.studio.connectors.task.TaskList></tasksConfig></invoke><invoke activityId="6" activityName="" comments="" configurationId="xml_serialize_xml_id_1" description="Serialize Xml Activity" expanded="true" moduleName="http://www.approuter.com/module/xml/" name="Write XML" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="rows" isParameter="false" location="Schema_4_mapOutputsTask_in_4" locationType="2" logicalName="srcDoc1" optionalParameter="false" originalRootNodeName="rows" rootNodeName="rows" varName="rows"/><destination canBeSubstitutedFromUI="true" displayName="InputXml" isParameter="true" location="Schema_4_mapOutputsTask_in_4" locationType="2" logicalName="dstDoc1" optionalParameter="false" originalRootNodeName="rows" rootNodeName="rows" varName="InputXml"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="DocTypeSystem" isParameter="true" location="serializexml-input-param.xsd-6" locationType="2" logicalName="dstDoc2" messageType="DocTypeSystem" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="DocTypeSystem" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="DocTypeSystem"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="DocTypePublic" isParameter="true" location="serializexml-input-param.xsd-6" locationType="2" logicalName="dstDoc3" messageType="DocTypePublic" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="DocTypePublic" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="DocTypePublic"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="OmitXmlDecl" isParameter="true" location="serializexml-input-param.xsd-6" locationType="2" logicalName="dstDoc4" messageType="OmitXmlDecl" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="OmitXmlDecl" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="OmitXmlDecl"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="Encoding" isParameter="true" location="serializexml-input-param.xsd-6" locationType="2" logicalName="dstDoc5" messageType="Encoding" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="Encoding" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="Encoding"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/ihmap:instances"/><to docName="dstDoc1" path="/rows/row/ihmap:instances"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/id"/><to docName="dstDoc1" path="/rows/row/id"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/name/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/name/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/name"/><to docName="dstDoc1" path="/rows/row/name"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/company/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/company/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/company"/><to docName="dstDoc1" path="/rows/row/company"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/address/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/address/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/address"/><to docName="dstDoc1" path="/rows/row/address"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/city/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/city/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/city"/><to docName="dstDoc1" path="/rows/row/city"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/country/ihmap:nillable"/><to docName="dstDoc1" path="/rows/row/country/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/rows/row/country"/><to docName="dstDoc1" path="/rows/row/country"/></do></rule></doMapping></mapSpec></inputMapSpecConfig><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="6" canBeSubstitutedFromUI="true" displayName="XmlText" isParameter="true" location="serializexml-output-param-string.xsd-6" locationType="2" logicalName="srcDoc1" messageType="XmlText" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="XmlText" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="XmlText"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="XmlText" isParameter="false" location="XmlText" locationType="2" logicalName="dstDoc1" messageType="XmlText" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="XmlText" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="XmlText" varName="XmlText"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/XmlText"/><to docName="dstDoc1" path="/XmlText"/></do></rule></doMapping></mapSpec></outputMapSpecConfig><tasksConfig><com.approuter.studio.connectors.task.TaskList><![CDATA[
+  ]]><tasks><![CDATA[
+    ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+      ]]><key><![CDATA[setupWorkflowTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[schemaTypeProperty]]></string><![CDATA[
+            ]]><int><![CDATA[0]]></int><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[schemaNameProperty]]></string><![CDATA[
+            ]]><string><![CDATA[/Orchestrations/Orchestration@[Execute Query]/{rows}]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[encoding]]></string><![CDATA[
+            ]]><string><![CDATA[ISO-8859-1]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[schemaGuidProperty]]></string><![CDATA[
+            ]]><string><![CDATA[Schema_4_mapOutputsTask_in_4]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[encoded]]></string><![CDATA[
+            ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners><![CDATA[
+        ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+          ]]><key><![CDATA[mapInputsTask]]></key><![CDATA[
+          ]]><children/><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[false]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners/><![CDATA[
+        ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+        ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+          ]]><key><![CDATA[mapOutputsTask]]></key><![CDATA[
+          ]]><children/><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[true]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners/><![CDATA[
+        ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+      ]]></listeners><![CDATA[
+    ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.task.ActivityRefTask/listeners/com.approuter.studio.connectors.task.MapTask"/><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.task.ActivityRefTask/listeners/com.approuter.studio.connectors.task.MapTask[2]"/><![CDATA[
+  ]]></tasks><![CDATA[
+  ]]><valid><![CDATA[false]]></valid><![CDATA[
+]]></com.approuter.studio.connectors.task.TaskList></tasksConfig></invoke><foreach activityId="8" comments="" configurationId="flow_for_each_id_1" description="ForEach Activity" expanded="true" inputVariable="rows" loopCounter="loopcounter_1" loopValue="loopvalue_1" name="For Each" query="/rows/row"><sequence activityId="30" comments="" configurationId="flow_sequence_id_1" description="Start Activity" expanded="true" name="sequence"><invoke activityId="7" activityName="" comments="" configurationId="ftp_put_id" description="This activity saves a file to a directory in the selected FTP endpoint" expanded="true" moduleName="http://www.approuter.com/module/ftp/" name="Put File" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="6" canBeSubstitutedFromUI="true" displayName="XmlText" isParameter="false" location="XmlText" locationType="2" logicalName="srcDoc1" messageType="XmlText" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="XmlText" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="XmlText" varName="XmlText"/><source canBeSubstitutedFromUI="true" displayName="loopcounter_1" isParameter="false" location="loopcounter_1" locationType="2" logicalName="srcDoc2" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="loopcounter_1" rootNodeName="loopcounter_1" varName="loopcounter_1"/><destination activityId="7" canBeSubstitutedFromUI="true" displayName="directory" isParameter="true" location="ftp-put-parameter-directory.xsd-7" locationType="2" logicalName="dstDoc1" messageType="directory" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="directory" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="directory"/><destination activityId="7" canBeSubstitutedFromUI="true" displayName="filename" isParameter="true" location="ftp-put-parameter-filename.xsd-7" locationType="2" logicalName="dstDoc2" messageType="filename" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="filename" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="filename"/><destination activityId="7" canBeSubstitutedFromUI="true" displayName="data" isParameter="true" location="ftp-put-parameter-string.xsd-7" locationType="2" logicalName="dstDoc3" messageType="data" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="data" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="data" varName="data"/><destination activityId="7" canBeSubstitutedFromUI="true" displayName="encoding" isParameter="true" location="ftp-put-parameter-encoding.xsd-7" locationType="2" logicalName="dstDoc4" messageType="encoding" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="encoding" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="encoding"/><destination activityId="7" canBeSubstitutedFromUI="true" displayName="overwrite" isParameter="true" location="ftp-put-parameter-overwrite.xsd-7" locationType="2" logicalName="dstDoc5" messageType="overwrite" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="overwrite" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="overwrite"/><destination activityId="7" canBeSubstitutedFromUI="true" displayName="connection" isParameter="true" location="FtpConnectionParameter.xsd-7" locationType="2" logicalName="dstDoc6" messageType="connection" namespace="http://www.approuter.com/schemas/2004/1/module/ftp/connectionparameter/" optionalParameter="true" originalRootNodeName="connection" originalRootNodeNameNS="http://www.approuter.com/schemas/2004/1/module/ftp/connectionparameter/" rootNodeName="connection"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/XmlText"/><to docName="dstDoc3" path="/data"/></do></rule><rule defaultValue="Address.xml" emitCData="false" guaranteed="true"><call guaranteed="true"><functoid function="Concatenate" gridX="189" gridY="70" id="1" resultType="xsd:string"><arg dataType="xsd:decimal" docName="srcDoc2"><path>/loopcounter_1</path></arg><arg dataType="xsd:string"><constant>account.xml</constant></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc2" srcPath="/loopcounter_1"/><link destDocName="dstDoc2" destPath="/filename" id="1" srcFunctoid="1"/></call></rule></doMapping></mapSpec></inputMapSpecConfig><tasksConfig><com.approuter.studio.connectors.task.TaskList><![CDATA[
+  ]]><tasks><![CDATA[
+    ]]><com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+      ]]><key><![CDATA[summaryTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners/><![CDATA[
+    ]]></com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+    ]]><com.approuter.studio.connectors.ftp.tasks.FTPEndpointTask><![CDATA[
+      ]]><key><![CDATA[endpointTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[endpoint]]></string><![CDATA[
+            ]]><string><![CDATA[appnet-guid://36D451240B44E42EBE6513BD8B4E04D07BA596AF04CA3A4C86E12A1C483E2715]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners><![CDATA[
+        ]]><com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask><![CDATA[
+          ]]><key><![CDATA[setupWorkflowTask]]></key><![CDATA[
+          ]]><children><![CDATA[
+            ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+              ]]><key><![CDATA[pollingTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[transferAscii]]></string><![CDATA[
+                    ]]><boolean><![CDATA[true]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+            ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+              ]]><key><![CDATA[retryTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[maxRetries]]></string><![CDATA[
+                    ]]><int><![CDATA[5]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[timeout]]></string><![CDATA[
+                    ]]><int><![CDATA[300]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[retryInterval]]></string><![CDATA[
+                    ]]><int><![CDATA[30]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+          ]]></children><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[binary]]></string><![CDATA[
+                ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[false]]></string><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[directory]]></string><![CDATA[
+                ]]><string/><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[overwrite]]></string><![CDATA[
+                ]]><string><![CDATA[y]]></string><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[encoding]]></string><![CDATA[
+                ]]><string><![CDATA[ISO-8859-1]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners><![CDATA[
+            ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+              ]]><key><![CDATA[mapInputsTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[true]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+          ]]></listeners><![CDATA[
+        ]]></com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask><![CDATA[
+      ]]></listeners><![CDATA[
+    ]]></com.approuter.studio.connectors.ftp.tasks.FTPEndpointTask><![CDATA[
+    ]]><com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask reference="../com.approuter.studio.connectors.ftp.tasks.FTPEndpointTask/listeners/com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask"/><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.ftp.tasks.FTPEndpointTask/listeners/com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask/listeners/com.approuter.studio.connectors.task.MapTask"/><![CDATA[
+  ]]></tasks><![CDATA[
+  ]]><valid><![CDATA[false]]></valid><![CDATA[
+]]></com.approuter.studio.connectors.task.TaskList></tasksConfig></invoke></sequence></foreach></sequence></process>

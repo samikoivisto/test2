@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process currentId="18" name="Accounts2Flatfile" persistenceEnabled="true" selectedActivityId="14" serialize="false" targetNamespace="http://www.approuter.com/schemas/2004/01/maestro/process/" xmlns="http://www.approuter.com/schemas/2004/01/maestro/process/" xmlns:bpel-ext="http://www.approuter.com/schemas/2003/1/bpel-ext/" xmlns:bpws="http://www.approuter.com/schemas/2004/01/maestro/process/" xmlns:fn="http://www.w3.org/2002/11/xquery-functions" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><schemas><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="body_1"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="body_1" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="body"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="body" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="16" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-encoding.xsd-16"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="encoding" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="16" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-string.xsd-16"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="data" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription counter-for-extra-xml-schema="0" isRepositoryLocation="true" repository-url="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" schemaId="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734"/><schemaDescription activityId="14" counter-for-extra-xml-schema="0" schemaId="data-param-string.xsd-14"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+   <xsd:element name="Data" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="16" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-overwrite.xsd-16"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="overwrite" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="16" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-directory.xsd-16"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="directory" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="14" counter-for-extra-xml-schema="0" schemaId="data-encoding-placeholder-param.xsd-14"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+   targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+   <xsd:element name="Xml" type="xsd:anyType"/>
+   <xsd:element name="Encoding" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="17" counter-for-extra-xml-schema="0" schemaId="objects-param.xsd-17"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:sobject.partner.soap.sforce.com" targetNamespace="urn:sobject.partner.soap.sforce.com" elementFormDefault="qualified"><xsd:simpleType name="ID"><xsd:restriction base="xsd:string"><xsd:length value="18"/><xsd:pattern value="[a-zA-Z0-9]{18}"/></xsd:restriction></xsd:simpleType><xsd:element name="objects"><xsd:complexType><xsd:sequence><xsd:element name="Account" minOccurs="0" maxOccurs="unbounded"><xsd:complexType><xsd:all><xsd:element name="Id" minOccurs="0" type="ID"/><xsd:element name="Name" minOccurs="0" type="xsd:string"/><xsd:element name="Type" minOccurs="0" nillable="true" type="xsd:string"/><xsd:element name="BillingCity" minOccurs="0" nillable="true" type="xsd:string"/><xsd:element name="BillingCountry" minOccurs="0" nillable="true" type="xsd:string"/></xsd:all></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="Data"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="Data" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="16" counter-for-extra-xml-schema="0" schemaId="ftp-put-parameter-filename.xsd-16"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="filename" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="objects-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:sobject.partner.soap.sforce.com" targetNamespace="urn:sobject.partner.soap.sforce.com" elementFormDefault="qualified"><xsd:simpleType name="ID"><xsd:restriction base="xsd:string"><xsd:length value="18"/><xsd:pattern value="[a-zA-Z0-9]{18}"/></xsd:restriction></xsd:simpleType><xsd:element name="objects"><xsd:complexType><xsd:sequence><xsd:element name="Account" minOccurs="0" maxOccurs="unbounded"><xsd:complexType><xsd:all><xsd:element name="Id" minOccurs="0" type="ID"/><xsd:element name="Name" minOccurs="0" type="xsd:string"/><xsd:element name="Type" minOccurs="0" nillable="true" type="xsd:string"/><xsd:element name="BillingCity" minOccurs="0" nillable="true" type="xsd:string"/><xsd:element name="BillingCountry" minOccurs="0" nillable="true" type="xsd:string"/></xsd:all></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema>]]></schemaDescription><schemaDescription activityId="16" counter-for-extra-xml-schema="0" schemaId="FtpConnectionParameter.xsd-16"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.approuter.com/schemas/2004/1/module/ftp/connectionparameter/"
+    xmlns:ihftp="http://www.approuter.com/schemas/2004/1/module/ftp/connectionparameter/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ih="http://www.approuter.com/schema/extension" elementFormDefault="qualified">
+    <xsd:simpleType name="NonEmptyString">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="FtpConnectionParamDetails">
+        <xsd:sequence>
+            <xsd:element name="host" type="xsd:string"/>
+            <xsd:element name="port" type="xsd:string"/>
+            <xsd:element name="username" type="ihftp:NonEmptyString"/>
+            <xsd:element name="password" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+            <xsd:attribute name="timeout" type="xsd:int" default="300" use="optional"/>
+            <xsd:attribute name="certificateName" type="xsd:string" default="Factory Supplied Identity" /> 
+            <xsd:attribute name="isActive" type="xsd:boolean" default="false"/>
+    </xsd:complexType>
+    <xsd:element name="connection" type="ihftp:FtpConnectionParamDetails"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="2" counter-for-extra-xml-schema="0" schemaId="orchestration_internal_variableJobInfo"><![CDATA[<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://www.approuter.com/schemas/2005/1/orchestration/jobinfo"
+            targetNamespace="http://www.approuter.com/schemas/2005/1/orchestration/jobinfo" elementFormDefault="qualified">
+    <xsd:element name="JobInfo" type="tns:JobInfoType"/>
+    <xsd:complexType name="JobInfoType">
+        <xsd:sequence>
+           <xsd:element name="jobId" type="xsd:string"/>
+           <xsd:element name="jobStartTime" type="xsd:dateTime"/>
+           <xsd:element name="projectName" type="xsd:string"/>
+           <xsd:element name="configurationName" type="xsd:string"/>
+           <xsd:element name="orchestrationName" type="xsd:string"/>
+           <xsd:element name="routerHostName" type="xsd:string"/>
+        </xsd:sequence>
+     </xsd:complexType>
+</xsd:schema>]]></schemaDescription><schemaDescription activityId="17" counter-for-extra-xml-schema="0" schemaId="sessionInfo-out-param.xsd-17"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        elementFormDefault="qualified">
+
+    <element name="sessionInfo">
+        <complexType>
+            <sequence>
+                <element name="serverURL" type="xsd:string"/>
+                <element name="sessionId" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription></schemas><dependecies><dependency id="AccFlatFile" projectNodeGuid="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" type="variable"/><dependency id="OutputXml" projectNodeGuid="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" type="variable"/><dependency id="AccFlatFile_1" projectNodeGuid="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" type="variable"/><dependency id="14" projectNodeGuid="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" type="activity"/><dependency id="16" projectNodeGuid="appnet-guid://36D451240B44E42EBE6513BD8B4E04D07BA596AF04CA3A4C86E12A1C483E2715" type="activity"/><dependency id="17" projectNodeGuid="appnet-guid://1DF31A0D22CABE74C02AC6EB5AFFCE9109DBBC353E8B397064CF89251FAA033B" type="activity"/></dependecies><variables selectedVariableName="objects_1"><variable assignable="false" bpel-ext:location="orchestration_internal_variableJobInfo" bpel-ext:locationType="2" bpel-ext:originalRootNode="" bpel-ext:rootNode="JobInfo" bpel-ext:rootNodeNS="http://www.approuter.com/schemas/2005/1/orchestration/jobinfo" canBeSubstitutedFromUI="true" internal="true" name="JobInfo" readOnly="true" typeEditable="false"><description>The orchestration creates this variable for every job. You can neither rename it nor delete it.</description></variable><variable assignable="true" bpel-ext:location="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" bpel-ext:locationType="0" bpel-ext:originalRootNode="AccFlatFile" bpel-ext:rootNode="AccFlatFile" bpel-ext:sourcexpath="/AccFlatFile" canBeSubstitutedFromUI="true" internal="false" name="AccFlatFile" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="objects-param.xsd-6" bpel-ext:locationType="2" bpel-ext:originalRootNode="objects" bpel-ext:originalRootNodeNS="urn:sobject.partner.soap.sforce.com" bpel-ext:rootNode="objects" bpel-ext:rootNodeNS="urn:sobject.partner.soap.sforce.com" bpel-ext:sourcexpath="/objects" canBeSubstitutedFromUI="true" internal="false" name="objects" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="body" bpel-ext:locationType="2" bpel-ext:originalRootNode="body" bpel-ext:rootNode="body" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="body" primitiveType="string" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="body_1" bpel-ext:locationType="2" bpel-ext:originalRootNode="body_1" bpel-ext:rootNode="body_1" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="body_1" primitiveType="string" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" bpel-ext:locationType="0" bpel-ext:originalRootNode="AccFlatFile" bpel-ext:rootNode="AccFlatFile" bpel-ext:sourcexpath="/AccFlatFile" canBeSubstitutedFromUI="true" internal="false" name="OutputXml" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" bpel-ext:locationType="0" bpel-ext:originalRootNode="AccFlatFile" bpel-ext:rootNode="AccFlatFile" bpel-ext:sourcexpath="/AccFlatFile" canBeSubstitutedFromUI="true" internal="false" name="AccFlatFile_1" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:activityId="14" bpel-ext:location="Data" bpel-ext:locationType="2" bpel-ext:originalRootNode="Data" bpel-ext:originalRootNodeNS="http://www.approuter.com/schemas/2003/1/castirontypes" bpel-ext:rootNode="Data" bpel-ext:rootNodeNS="http://www.approuter.com/schemas/2003/1/castirontypes" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" messageType="Data" name="Data" primitiveType="string" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:activityId="17" bpel-ext:location="objects-param.xsd-17" bpel-ext:locationType="2" bpel-ext:originalRootNode="objects" bpel-ext:originalRootNodeNS="urn:sobject.partner.soap.sforce.com" bpel-ext:rootNode="objects" bpel-ext:rootNodeNS="urn:sobject.partner.soap.sforce.com" canBeSubstitutedFromUI="true" internal="false" messageType="objects" name="objects_1" readOnly="false" typeEditable="true"><description>Variable Description</description></variable></variables><comments/><sequence activityId="2" comments="" configurationId="flow_sequence_id_1" description="Start Activity" expanded="true" name="Start"><start activityId="17" activityName="" comments="" configurationId="sfdc_get_updated_id" description="Poll Updated Objects" expanded="true" moduleName="http://www.approuter.com/module/sfdc/" name="Poll Updated Objects" partnerLink=""><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="17" canBeSubstitutedFromUI="true" displayName="objects" isParameter="true" location="objects-param.xsd-17" locationType="2" logicalName="srcDoc1" messageType="objects" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="objects" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="objects" varName="objects"/><source activityId="17" canBeSubstitutedFromUI="true" displayName="sessionInfo" isParameter="true" location="sessionInfo-out-param.xsd-17" locationType="2" logicalName="srcDoc2" messageType="sessionInfo" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="false" originalRootNodeName="sessionInfo" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="sessionInfo"/><destination activityId="17" canBeSubstitutedFromUI="true" displayName="objects_1" isParameter="false" location="objects-param.xsd-17" locationType="2" logicalName="dstDoc1" messageType="objects" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="objects" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="objects" varName="objects_1"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/ihmap:instances"/><to docName="dstDoc1" path="/objects/Account/ihmap:instances"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Id/ihmap:exists"/><to docName="dstDoc1" path="/objects/Account/Id/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Id"/><to docName="dstDoc1" path="/objects/Account/Id"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Name/ihmap:exists"/><to docName="dstDoc1" path="/objects/Account/Name/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Name"/><to docName="dstDoc1" path="/objects/Account/Name"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Type/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Account/Type/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Type/ihmap:exists"/><to docName="dstDoc1" path="/objects/Account/Type/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Type"/><to docName="dstDoc1" path="/objects/Account/Type"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/BillingCity/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Account/BillingCity/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/BillingCity/ihmap:exists"/><to docName="dstDoc1" path="/objects/Account/BillingCity/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/BillingCity"/><to docName="dstDoc1" path="/objects/Account/BillingCity"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/BillingCountry/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Account/BillingCountry/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/BillingCountry/ihmap:exists"/><to docName="dstDoc1" path="/objects/Account/BillingCountry/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/BillingCountry"/><to docName="dstDoc1" path="/objects/Account/BillingCountry"/></do></rule></doMapping></mapSpec></outputMapSpecConfig><model><ns2:getUpdatedObjects batchSize="10" connectionTimeout="300" endpoint="/Endpoints/Salesforce" maxRetries="5" objectType="Account" pollingInterval="1" pollingTimeUnit="minutes" retryInterval="30" xmlns="http://www.approuter.com/schemas/module/sfdc/metadata/1.0" xmlns:ns2="http://www.approuter.com/schemas/module/sfdc/activity/1.0"><ns2:objectFields isExternalId="false" label="Tilin tunnus" name="Id" nillable="false" required="false" soapType="tns:ID" type="id" used="true"/><ns2:objectFields isExternalId="false" label="Poistettu" name="IsDeleted" nillable="false" required="false" soapType="xsd:boolean" type="Checkbox" used="false"/><ns2:objectFields isExternalId="true" label="Päätietotietueen tunnus" lookupObject="Account" name="MasterRecordId" nillable="true" relationshipName="MasterRecord" required="false" soapType="tns:ID" type="Lookup(Account)(Account)" used="false"/><ns2:objectFields isExternalId="false" label="Tilin nimi" name="Name" nillable="false" required="false" soapType="xsd:string" type="Name" used="true"/><ns2:objectFields isExternalId="false" label="Tilin tyyppi" name="Type" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="true"/><ns2:objectFields isExternalId="true" label="Päätilin tunnus" lookupObject="Account" name="ParentId" nillable="true" relationshipName="Parent" required="false" soapType="tns:ID" type="Lookup(Account)(Account)" used="false"/><ns2:objectFields isExternalId="false" label="(Laskutusosoite) Katu" name="BillingStreet" nillable="true" required="false" soapType="xsd:string" type="Text Area(255)" used="false"/><ns2:objectFields isExternalId="false" label="(Laskutusosoite) Kaupunki" name="BillingCity" nillable="true" required="false" soapType="xsd:string" type="Text(40)" used="true"/><ns2:objectFields isExternalId="false" label="(Laskutusosoite) Osavaltio/provinssi" name="BillingState" nillable="true" required="false" soapType="xsd:string" type="Text(80)" used="false"/><ns2:objectFields isExternalId="false" label="(Laskutusosoite) Postinumero" name="BillingPostalCode" nillable="true" required="false" soapType="xsd:string" type="Text(20)" used="false"/><ns2:objectFields isExternalId="false" label="(Laskutusosoite) Maa" name="BillingCountry" nillable="true" required="false" soapType="xsd:string" type="Text(80)" used="true"/><ns2:objectFields isExternalId="false" label="Laskutusosoite (leveysaste)" name="BillingLatitude" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="Laskutusosoite (pituusaste)" name="BillingLongitude" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="(Toimitusosoite) Katu" name="ShippingStreet" nillable="true" required="false" soapType="xsd:string" type="Text Area(255)" used="false"/><ns2:objectFields isExternalId="false" label="(Toimitusosoite) Kaupunki" name="ShippingCity" nillable="true" required="false" soapType="xsd:string" type="Text(40)" used="false"/><ns2:objectFields isExternalId="false" label="(Toimitusosoite) Osavaltio/provinssi" name="ShippingState" nillable="true" required="false" soapType="xsd:string" type="Text(80)" used="false"/><ns2:objectFields isExternalId="false" label="(Toimitusosoite) Postinumero" name="ShippingPostalCode" nillable="true" required="false" soapType="xsd:string" type="Text(20)" used="false"/><ns2:objectFields isExternalId="false" label="(Toimitusosoite) Maa" name="ShippingCountry" nillable="true" required="false" soapType="xsd:string" type="Text(80)" used="false"/><ns2:objectFields isExternalId="false" label="Toimitusosoite (leveysaste)" name="ShippingLatitude" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="Toimitusosoite (pituusaste)" name="ShippingLongitude" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="Tilin puhelinnumero" name="Phone" nillable="true" required="false" soapType="xsd:string" type="Phone" used="false"/><ns2:objectFields isExternalId="false" label="Tilin faksinumero" name="Fax" nillable="true" required="false" soapType="xsd:string" type="Phone" used="false"/><ns2:objectFields isExternalId="false" label="Tilin numero" name="AccountNumber" nillable="true" required="false" soapType="xsd:string" type="Text(40)" used="false"/><ns2:objectFields isExternalId="false" label="Web-sivusto" name="Website" nillable="true" required="false" soapType="xsd:string" type="URL(255)" used="false"/><ns2:objectFields isExternalId="false" label="Valokuvan URL" name="PhotoUrl" nillable="true" required="false" soapType="xsd:string" type="URL(255)" used="false"/><ns2:objectFields isExternalId="false" label="SIC-koodi" name="Sic" nillable="true" required="false" soapType="xsd:string" type="Text(20)" used="false"/><ns2:objectFields isExternalId="false" label="Toimiala" name="Industry" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Vuosituotto" name="AnnualRevenue" nillable="true" required="false" soapType="xsd:double" type="Currency(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="Työntekijät" name="NumberOfEmployees" nillable="true" required="false" soapType="xsd:int" type="Number(8, 0)" used="false"/><ns2:objectFields isExternalId="false" label="Omistus" name="Ownership" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Tikkerisymboli" name="TickerSymbol" nillable="true" required="false" soapType="xsd:string" type="Text(20)" used="false"/><ns2:objectFields isExternalId="false" label="Tilin kuvaus" name="Description" nillable="true" required="false" soapType="xsd:string" type="Long Text Area(32000)" used="false"/><ns2:objectFields isExternalId="false" label="Tilin luokitus" name="Rating" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Tilin toimipaikka" name="Site" nillable="true" required="false" soapType="xsd:string" type="Text(80)" used="false"/><ns2:objectFields isExternalId="true" label="Omistajan tunnus" lookupObject="User" name="OwnerId" nillable="false" relationshipName="Owner" required="false" soapType="tns:ID" type="Lookup(User)(User)" used="false"/><ns2:objectFields isExternalId="false" label="Luontipäivä" name="CreatedDate" nillable="false" required="false" soapType="xsd:dateTime" type="Date/Time" used="false"/><ns2:objectFields isExternalId="true" label="Luojan tunnus" lookupObject="User" name="CreatedById" nillable="false" relationshipName="CreatedBy" required="false" soapType="tns:ID" type="Lookup(User)(User)" used="false"/><ns2:objectFields isExternalId="false" label="Viimeinen muokkauspäivä" name="LastModifiedDate" nillable="false" required="false" soapType="xsd:dateTime" type="Date/Time" used="false"/><ns2:objectFields isExternalId="true" label="Edellisen muokkaajan tunnus" lookupObject="User" name="LastModifiedById" nillable="false" relationshipName="LastModifiedBy" required="false" soapType="tns:ID" type="Lookup(User)(User)" used="false"/><ns2:objectFields isExternalId="false" label="Järjestelmän mod-leima" name="SystemModstamp" nillable="false" required="false" soapType="xsd:dateTime" type="Date/Time" used="false"/><ns2:objectFields isExternalId="false" label="Edellinen tapahtuma" name="LastActivityDate" nillable="true" required="false" soapType="xsd:date" type="Date" used="false"/><ns2:objectFields isExternalId="false" label="Edellinen tarkastelupäivämäärä" name="LastViewedDate" nillable="true" required="false" soapType="xsd:dateTime" type="Date/Time" used="false"/><ns2:objectFields isExternalId="false" label="Edellinen viitattu päivämäärä" name="LastReferencedDate" nillable="true" required="false" soapType="xsd:dateTime" type="Date/Time" used="false"/><ns2:objectFields isExternalId="false" label="Data.com-avain" name="Jigsaw" nillable="true" required="false" soapType="xsd:string" type="Text(20)" used="false"/><ns2:objectFields isExternalId="false" label="Jigsaw Company ID" name="JigsawCompanyId" nillable="true" required="false" soapType="xsd:string" type="Text(20)" used="false"/><ns2:objectFields isExternalId="false" label="Päivitystila" name="CleanStatus" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Tililähde" name="AccountSource" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="D-U-N-S-numero" name="DunsNumber" nillable="true" required="false" soapType="xsd:string" type="Text(9)" used="false"/><ns2:objectFields isExternalId="false" label="Tradestyle" name="Tradestyle" nillable="true" required="false" soapType="xsd:string" type="Text(255)" used="false"/><ns2:objectFields isExternalId="false" label="NAICS-koodi" name="NaicsCode" nillable="true" required="false" soapType="xsd:string" type="Text(8)" used="false"/><ns2:objectFields isExternalId="false" label="NAICS-kuvaus" name="NaicsDesc" nillable="true" required="false" soapType="xsd:string" type="Text(120)" used="false"/><ns2:objectFields isExternalId="false" label="Aloitusvuosi" name="YearStarted" nillable="true" required="false" soapType="xsd:string" type="Text(4)" used="false"/><ns2:objectFields isExternalId="false" label="SIC-kuvaus" name="SicDesc" nillable="true" required="false" soapType="xsd:string" type="Text(80)" used="false"/><ns2:objectFields isExternalId="true" label="D&amp;B-yhtiön tunnus" lookupObject="DandBCompany" name="DandbCompanyId" nillable="true" relationshipName="DandbCompany" required="false" soapType="tns:ID" type="Lookup(DandBCompany)(DandBCompany)" used="false"/><ns2:objectFields isExternalId="false" label="Customer Priority" name="CustomerPriority__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="SLA" name="SLA__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Active" name="Active__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Number of Locations" name="NumberofLocations__c" nillable="true" required="false" soapType="xsd:double" type="Number(3, 0)" used="false"/><ns2:objectFields isExternalId="false" label="Upsell Opportunity" name="UpsellOpportunity__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="SLA Serial Number" name="SLASerialNumber__c" nillable="true" required="false" soapType="xsd:string" type="Text(10)" used="false"/><ns2:objectFields isExternalId="false" label="SLA Expiration Date" name="SLAExpirationDate__c" nillable="true" required="false" soapType="xsd:date" type="Date" used="false"/></ns2:getUpdatedObjects></model></start><map activityId="12" comments="" configurationId="flow_map_id_1" description="Map Activity" expanded="true" name="Map Variables"><mapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="true" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="17" canBeSubstitutedFromUI="true" displayName="objects_1" isParameter="false" location="objects-param.xsd-17" locationType="2" logicalName="srcDoc1" messageType="objects" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="objects" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="objects" varName="objects_1"/><destination canBeSubstitutedFromUI="true" displayName="AccFlatFile_1" isParameter="false" location="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" locationType="0" logicalName="dstDoc1" optionalParameter="false" originalRootNodeName="AccFlatFile" rootNodeName="AccFlatFile" varName="AccFlatFile_1" xpathToRootNode="/AccFlatFile"/></specInfo><doMapping><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc1" path="/objects/Account/ihmap:instances"/><to docName="dstDoc1" path="/AccFlatFile/data/ihmap:instances"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Id"/><to docName="dstDoc1" path="/AccFlatFile/data/id"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Name"/><to docName="dstDoc1" path="/AccFlatFile/data/name"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/Type"/><to docName="dstDoc1" path="/AccFlatFile/data/type"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Account/BillingCity"/><to docName="dstDoc1" path="/AccFlatFile/data/city"/></do></rule><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid function="Uppercase" gridX="189" gridY="155" id="1" resultType="xsd:string"><arg dataType="xsd:string" docName="srcDoc1"><path>/objects/Account/BillingCountry</path></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc1" srcPath="/objects/Account/BillingCountry"/><link destDocName="dstDoc1" destPath="/AccFlatFile/data/country" id="1" srcFunctoid="1"/></call></rule></doMapping></mapSpec></mapSpecConfig></map><invoke activityId="14" activityName="" comments="" configurationId="data_serialize_id_1" description="Serialize Flat File" expanded="true" moduleName="http://www.approuter.com/module/data/" name="Write Flat File" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="true" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="AccFlatFile_1" isParameter="false" location="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" locationType="0" logicalName="srcDoc1" optionalParameter="false" originalRootNodeName="AccFlatFile" rootNodeName="AccFlatFile" varName="AccFlatFile_1" xpathToRootNode="/AccFlatFile"/><destination canBeSubstitutedFromUI="true" displayName="Xml" isParameter="true" location="appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734" locationType="0" logicalName="dstDoc1" optionalParameter="false" originalRootNodeName="AccFlatFile" rootNodeName="AccFlatFile" varName="Xml"/><destination activityId="14" canBeSubstitutedFromUI="true" displayName="Encoding" isParameter="true" location="data-encoding-placeholder-param.xsd-14" locationType="2" logicalName="dstDoc2" messageType="Encoding" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="Encoding" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="Encoding"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/AccFlatFile/data/ihmap:instances"/><to docName="dstDoc1" path="/AccFlatFile/data/ihmap:instances"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/AccFlatFile/data/id"/><to docName="dstDoc1" path="/AccFlatFile/data/id"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/AccFlatFile/data/name"/><to docName="dstDoc1" path="/AccFlatFile/data/name"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/AccFlatFile/data/city"/><to docName="dstDoc1" path="/AccFlatFile/data/city"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/AccFlatFile/data/country"/><to docName="dstDoc1" path="/AccFlatFile/data/country"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/AccFlatFile/data/type"/><to docName="dstDoc1" path="/AccFlatFile/data/type"/></do></rule></doMapping></mapSpec></inputMapSpecConfig><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="14" canBeSubstitutedFromUI="true" displayName="Data" isParameter="true" location="data-param-string.xsd-14" locationType="2" logicalName="srcDoc1" messageType="Data" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="Data" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="Data" varName="Data"/><destination activityId="14" canBeSubstitutedFromUI="true" displayName="Data" isParameter="false" location="Data" locationType="2" logicalName="dstDoc1" messageType="Data" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="Data" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="Data" varName="Data"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/Data"/><to docName="dstDoc1" path="/Data"/></do></rule></doMapping></mapSpec></outputMapSpecConfig><tasksConfig><com.approuter.studio.connectors.task.TaskList><![CDATA[
+  ]]><tasks><![CDATA[
+    ]]><com.approuter.studio.connectors.task.SchemaTask><![CDATA[
+      ]]><key><![CDATA[setupWorkflowTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[guid]]></string><![CDATA[
+            ]]><string><![CDATA[appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[encoding]]></string><![CDATA[
+            ]]><string><![CDATA[ISO-8859-1]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[encoded]]></string><![CDATA[
+            ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners><![CDATA[
+        ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+          ]]><key><![CDATA[mapInputsTask]]></key><![CDATA[
+          ]]><children/><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[guid]]></string><![CDATA[
+                ]]><string><![CDATA[appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734]]></string><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[false]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners/><![CDATA[
+        ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+        ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+          ]]><key><![CDATA[mapOutputsTask]]></key><![CDATA[
+          ]]><children/><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[guid]]></string><![CDATA[
+                ]]><string><![CDATA[appnet-guid://3BABEEC446AC2C2C3F9D5910CE875387C01D2BBACA7539A22DD2174E85608734]]></string><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[true]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners/><![CDATA[
+        ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+      ]]></listeners><![CDATA[
+    ]]></com.approuter.studio.connectors.task.SchemaTask><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.task.SchemaTask/listeners/com.approuter.studio.connectors.task.MapTask"/><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.task.SchemaTask/listeners/com.approuter.studio.connectors.task.MapTask[2]"/><![CDATA[
+  ]]></tasks><![CDATA[
+  ]]><valid><![CDATA[false]]></valid><![CDATA[
+]]></com.approuter.studio.connectors.task.TaskList></tasksConfig></invoke><invoke activityId="16" activityName="" comments="" configurationId="ftp_put_id" description="This activity saves a file to a directory in the selected FTP endpoint" expanded="true" moduleName="http://www.approuter.com/module/ftp/" name="Put File" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="14" canBeSubstitutedFromUI="true" displayName="Data" isParameter="false" location="Data" locationType="2" logicalName="srcDoc1" messageType="Data" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="Data" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="Data" varName="Data"/><destination activityId="16" canBeSubstitutedFromUI="true" displayName="directory" isParameter="true" location="ftp-put-parameter-directory.xsd-16" locationType="2" logicalName="dstDoc1" messageType="directory" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="directory" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="directory"/><destination activityId="16" canBeSubstitutedFromUI="true" displayName="filename" isParameter="true" location="ftp-put-parameter-filename.xsd-16" locationType="2" logicalName="dstDoc2" messageType="filename" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="filename" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="filename"/><destination activityId="16" canBeSubstitutedFromUI="true" displayName="data" isParameter="true" location="ftp-put-parameter-string.xsd-16" locationType="2" logicalName="dstDoc3" messageType="data" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="data" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="data" varName="data"/><destination activityId="16" canBeSubstitutedFromUI="true" displayName="encoding" isParameter="true" location="ftp-put-parameter-encoding.xsd-16" locationType="2" logicalName="dstDoc4" messageType="encoding" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="encoding" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="encoding"/><destination activityId="16" canBeSubstitutedFromUI="true" displayName="overwrite" isParameter="true" location="ftp-put-parameter-overwrite.xsd-16" locationType="2" logicalName="dstDoc5" messageType="overwrite" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="true" originalRootNodeName="overwrite" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="overwrite"/><destination activityId="16" canBeSubstitutedFromUI="true" displayName="connection" isParameter="true" location="FtpConnectionParameter.xsd-16" locationType="2" logicalName="dstDoc6" messageType="connection" namespace="http://www.approuter.com/schemas/2004/1/module/ftp/connectionparameter/" optionalParameter="true" originalRootNodeName="connection" originalRootNodeNameNS="http://www.approuter.com/schemas/2004/1/module/ftp/connectionparameter/" rootNodeName="connection"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/Data"/><to docName="dstDoc3" path="/data"/></do></rule><rule defaultValue="accounts.csv" emitCData="false" guaranteed="true"><do guaranteed="true"><to docName="dstDoc2" path="/filename"/></do></rule></doMapping></mapSpec></inputMapSpecConfig><tasksConfig><com.approuter.studio.connectors.task.TaskList><![CDATA[
+  ]]><tasks><![CDATA[
+    ]]><com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+      ]]><key><![CDATA[summaryTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners/><![CDATA[
+    ]]></com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+    ]]><com.approuter.studio.connectors.ftp.tasks.FTPEndpointTask><![CDATA[
+      ]]><key><![CDATA[endpointTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[endpoint]]></string><![CDATA[
+            ]]><string><![CDATA[appnet-guid://36D451240B44E42EBE6513BD8B4E04D07BA596AF04CA3A4C86E12A1C483E2715]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners><![CDATA[
+        ]]><com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask><![CDATA[
+          ]]><key><![CDATA[setupWorkflowTask]]></key><![CDATA[
+          ]]><children><![CDATA[
+            ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+              ]]><key><![CDATA[pollingTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[transferAscii]]></string><![CDATA[
+                    ]]><boolean><![CDATA[true]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+            ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+              ]]><key><![CDATA[retryTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[maxRetries]]></string><![CDATA[
+                    ]]><int><![CDATA[5]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[timeout]]></string><![CDATA[
+                    ]]><int><![CDATA[300]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[retryInterval]]></string><![CDATA[
+                    ]]><int><![CDATA[30]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+          ]]></children><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[binary]]></string><![CDATA[
+                ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[false]]></string><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[directory]]></string><![CDATA[
+                ]]><string><![CDATA[/FTPHOME]]></string><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[overwrite]]></string><![CDATA[
+                ]]><string><![CDATA[a]]></string><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[encoding]]></string><![CDATA[
+                ]]><string><![CDATA[UTF-8]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners><![CDATA[
+            ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+              ]]><key><![CDATA[mapInputsTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[true]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+          ]]></listeners><![CDATA[
+        ]]></com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask><![CDATA[
+      ]]></listeners><![CDATA[
+    ]]></com.approuter.studio.connectors.ftp.tasks.FTPEndpointTask><![CDATA[
+    ]]><com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask reference="../com.approuter.studio.connectors.ftp.tasks.FTPEndpointTask/listeners/com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask"/><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.ftp.tasks.FTPEndpointTask/listeners/com.approuter.studio.connectors.ftp.tasks.FTPSetupWorkflowTask/listeners/com.approuter.studio.connectors.task.MapTask"/><![CDATA[
+  ]]></tasks><![CDATA[
+  ]]><valid><![CDATA[false]]></valid><![CDATA[
+]]></com.approuter.studio.connectors.task.TaskList></tasksConfig></invoke></sequence></process>

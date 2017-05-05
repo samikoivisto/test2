@@ -1,0 +1,75 @@
+<document name="AccFlatFile" documentNamespace="" encoding="US ASCII" serializeCRLF="true" eosDelimited="true" xmlns="http://www.approuter.com/schemas/2003/2/connector/file/fsd/">
+  <types/>
+  <message name="AccFlatFile" recordTemplate="" structure="delimited" childOrder="infix" delimitEmptyData="true" maxOccurs="1" minOccurs="1">
+    <childDelimiter>
+      <isNewline>true</isNewline>
+    </childDelimiter>
+    <repeatDelimiter>
+      <isNewline>true</isNewline>
+    </repeatDelimiter>
+    <children>
+      <order>
+        <record name="data" recordTemplate="" structure="delimited" childOrder="infix" recordIdentifierOffset="1" delimitEmptyData="true" maxOccurs="unbounded" minOccurs="1">
+          <childDelimiter>
+            <character type="ascii" value=";"/>
+          </childDelimiter>
+          <repeatDelimiter>
+            <isNewline>true</isNewline>
+          </repeatDelimiter>
+          <children>
+            <order>
+              <field name="id" fieldTemplate="" length="0" minOccurs="1" maxOccurs="1">
+                <escapeChar>
+                  <character type="ascii" value="&quot;"/>
+                </escapeChar>
+                <encapsulationChar>
+                  <character type="ascii" value="&quot;"/>
+                </encapsulationChar>
+              </field>
+            </order>
+            <order>
+              <field name="name" fieldTemplate="" length="0" minOccurs="1" maxOccurs="1">
+                <escapeChar>
+                  <character type="ascii" value="&quot;"/>
+                </escapeChar>
+                <encapsulationChar>
+                  <character type="ascii" value="&quot;"/>
+                </encapsulationChar>
+              </field>
+            </order>
+            <order>
+              <field name="city" fieldTemplate="" length="0" minOccurs="1" maxOccurs="1">
+                <escapeChar>
+                  <character type="ascii" value="&quot;"/>
+                </escapeChar>
+                <encapsulationChar>
+                  <character type="ascii" value="&quot;"/>
+                </encapsulationChar>
+              </field>
+            </order>
+            <order>
+              <field name="country" fieldTemplate="" length="0" minOccurs="1" maxOccurs="1">
+                <escapeChar>
+                  <character type="ascii" value="&quot;"/>
+                </escapeChar>
+                <encapsulationChar>
+                  <character type="ascii" value="&quot;"/>
+                </encapsulationChar>
+              </field>
+            </order>
+            <order>
+              <field name="type" fieldTemplate="" length="0" minOccurs="1" maxOccurs="1">
+                <escapeChar>
+                  <character type="ascii" value="&quot;"/>
+                </escapeChar>
+                <encapsulationChar>
+                  <character type="ascii" value="&quot;"/>
+                </encapsulationChar>
+              </field>
+            </order>
+          </children>
+        </record>
+      </order>
+    </children>
+  </message>
+</document>
